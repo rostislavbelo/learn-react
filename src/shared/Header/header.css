@@ -1,0 +1,8 @@
+.header__list {
+    display: flex;
+    justify-content: space-around;
+    min-height: 150px;
+    padding: 75px 0;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 50px;
+}
