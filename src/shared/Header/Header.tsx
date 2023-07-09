@@ -3,7 +3,11 @@ import styles from "./header.css";
 import { SearchBlock } from "./SearchBlock";
 //import { tokenContext } from "../context/tokenContext";
 
-export function Header() {
+interface IHeaderProps {
+  token: string;
+}
+
+export function Header({token}:IHeaderProps) {
   // const {Consumer} = tokenContext;
 
   return (
@@ -12,7 +16,7 @@ export function Header() {
         {(token:string) => <SearchBlock token={token} />}
       </Consumer> */}
 
-      <SearchBlock />
+      <SearchBlock token={token} />
     </div>
   );
 }

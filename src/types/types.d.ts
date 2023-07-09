@@ -6,3 +6,7 @@ declare module "*.css" {
 declare module "*.jpeg";
 
 declare module "*.png";
+
+interface Window {
+  __token__: string;
+}
