@@ -1,7 +1,6 @@
 import { hot } from "react-hot-loader/root";
 import * as React from "react";
 import styles from "./examples.css";
-import { GenerateList } from "./utils/generateList";
 
 //----------------------------------------------------------
 // дз по тс

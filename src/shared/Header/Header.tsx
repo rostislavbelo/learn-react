@@ -1,12 +1,18 @@
-import React from 'react';
-import styles from './header.css';
+import React from "react";
+import styles from "./header.css";
+import { SearchBlock } from "./SearchBlock";
+//import { tokenContext } from "../context/tokenContext";
 
 export function Header() {
+  // const {Consumer} = tokenContext;
+
   return (
-    <ul className={styles.header__list}>
-      <li>Элемент хедера</li>
-      <li>Элемент хедера</li>
-      <li>Элемент хедера</li>
-    </ul>
+    <div className={styles.header}>
+      {/* <Consumer>
+        {(token:string) => <SearchBlock token={token} />}
+      </Consumer> */}
+
+      <SearchBlock />
+    </div>
   );
 }
