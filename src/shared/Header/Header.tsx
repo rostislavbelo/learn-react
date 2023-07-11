@@ -1,21 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./header.css";
 import { SearchBlock } from "./SearchBlock";
-//import { tokenContext } from "../context/tokenContext";
+import { tokenContext } from "../context/tocenContext";
 
-interface IHeaderProps {
-  token: string;
-}
 
-export function Header({token}:IHeaderProps) {
-  // const {Consumer} = tokenContext;
+export function Header() {
+const token = useContext(tokenContext)
 
   return (
     <div className={styles.header}>
-      {/* <Consumer>
-        {(token:string) => <SearchBlock token={token} />}
-      </Consumer> */}
-
       <SearchBlock token={token} />
     </div>
   );
