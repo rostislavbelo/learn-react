@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./searchblock.css";
 import { UserBlock } from "./UserBlock";
-import { UseUserData } from "../../../hooks/useUserData";
+import { useUserData } from "../../../hooks/useUserData";
 
-interface ISearchBlockProps {
-  token: string;
-}
 
-export function SearchBlock({token}:ISearchBlockProps) {
-const [data] = UseUserData(token)
+export function SearchBlock() {
+const [data] = useUserData()
 
   return (
     <div className={styles.search}>
