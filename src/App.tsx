@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { hot } from "react-hot-loader/root";
 import { ExamplesComponent } from "./shared/Examples";
 import { Layout } from "./shared/Layout";
@@ -8,24 +8,29 @@ import { CardsList } from "./shared/CardsList";
 import "./main.global.css";
 import { useToken } from "./hooks/useToken";
 import { tokenContext } from "./shared/context/tocenContext";
+import { UserContextProvider } from "./shared/context/userContext";
+
 
 function AppComponent() {
 
   const [token] = useToken()
 
-  const {Provider} = tokenContext;
+
 
 
   return (
-    <Provider value={token}>
-      <Layout>
-        <Header />
-        <Content>
-          <CardsList />
-        </Content>
-        <ExamplesComponent />      
-      </Layout>
-    </Provider>
+    <tokenContext.Provider value={token}>
+      <UserContextProvider>
+        <Layout>
+          <Header />
+          <Content>
+            <CardsList />
+          </Content>
+          <ExamplesComponent />      
+        </Layout>
+      </ UserContextProvider>  
+
+    </ tokenContext.Provider>
   );
 }
 
