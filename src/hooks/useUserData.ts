@@ -14,7 +14,8 @@ export function useUserData() {
     const token = useContext(tokenContext);
 
     useEffect(() => {
-      axios.get("https://oauth.reddit.com/api/v1/me", {
+      if (token !== '') {
+      axios.get("https://oauth.reddit.com/api/v1/me.json", {
   
           headers: { Authorization: `bearer ${token}` },
         })
@@ -24,6 +25,8 @@ export function useUserData() {
           console.log(resp.data);
         })
         .catch(console.log);
+      }
+
     }, [token]);
 
 

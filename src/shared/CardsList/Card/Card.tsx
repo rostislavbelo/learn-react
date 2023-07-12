@@ -5,11 +5,20 @@ import { Menu } from "./Menu";
 import { Preview } from "./Preview";
 import { TextContent } from "./TextContent";
 
-export function Card() {
+
+interface ICardProps {
+  dataAuthor?: string;
+  dataTitle?: string;
+  imgPath?: string;
+  dataUrl?: string;
+}
+
+
+export function Card({dataAuthor, dataTitle, imgPath, dataUrl}:ICardProps) {
   return (
     <div className={styles.card}>
-      <TextContent />
-      <Preview />
+      <TextContent dataAuthor={dataAuthor} dataTitle={dataTitle} dataUrl={dataUrl}/>
+      <Preview imgPath={imgPath}/>
       <Menu />
       <Controls />
     </div>

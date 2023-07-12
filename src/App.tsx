@@ -9,25 +9,25 @@ import "./main.global.css";
 import { useToken } from "./hooks/useToken";
 import { tokenContext } from "./shared/context/tocenContext";
 import { UserContextProvider } from "./shared/context/userContext";
+import { PostsContextProvider } from "./shared/context/postsContext";
 
 
 function AppComponent() {
 
   const [token] = useToken()
 
-
-
-
   return (
     <tokenContext.Provider value={token}>
       <UserContextProvider>
-        <Layout>
-          <Header />
-          <Content>
-            <CardsList />
-          </Content>
-          <ExamplesComponent />      
-        </Layout>
+        <PostsContextProvider>
+          <Layout>
+            <Header />
+            <Content>
+              <CardsList />
+            </Content>
+            <ExamplesComponent />      
+          </Layout>
+        </PostsContextProvider>
       </ UserContextProvider>  
 
     </ tokenContext.Provider>
