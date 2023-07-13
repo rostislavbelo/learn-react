@@ -4,6 +4,7 @@ import { Controls } from "./Controls";
 import { Menu } from "./Menu";
 import { Preview } from "./Preview";
 import { TextContent } from "./TextContent";
+import { ModalMain } from "../../ModalMain";
 
 
 interface ICardProps {

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IconComponent, TNames, TSizes } from "../IconComponent";
+import { ModalMain } from "../ModalMain";
 
 
 interface IItem {
@@ -20,6 +21,7 @@ interface IGenerateListProps {
 
 
 export function GenerateList({ list }: IGenerateListProps) {
+
     return (
         <>
             {list.map(({As = 'div', text, onClick, className, id, href, dataMobile, icon, size}) => (
@@ -30,13 +32,15 @@ export function GenerateList({ list }: IGenerateListProps) {
                     href={href}  
                     data-mobile={dataMobile}
                 >    
-                    <button>
+                    <button onClick={()=>{console.log('click')}}>
                         { icon && <IconComponent name={icon} size={size}/> }        
                         <span>{text}</span>
                     </button>       
                 </As>
-            ))}        
+            ))}      
         </>
+
+
 
     );
 }
