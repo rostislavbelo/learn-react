@@ -39,8 +39,5 @@ export function GenerateList({ list }: IGenerateListProps) {
                 </As>
             ))}      
         </>
-
-
-
     );
 }
