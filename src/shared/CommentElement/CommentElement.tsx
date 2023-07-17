@@ -1,19 +1,9 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './commentelement.css';
-//import { commentContext } from '../context/commentContext';
-import { RootState } from '../../App';
 import { useDispatch, useSelector, useStore } from 'react-redux';
+import { RootState, updateComment } from '../../store';
 
 
-
-
-
-// const [commentControled, setCommentControled] = useState("");
-
-// function handleSubmitControlled(event: FormEvent) {
-//   event.preventDefault();
-//   setCommentControled(value);
-// }
 
 export function CommentElement() {
 
@@ -25,14 +15,22 @@ export function CommentElement() {
   const dispatch = useDispatch();
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    dispatch({type: 'UPDATE_COMMENT', text: event.target.value});
+    dispatch(updateComment(event.target.value));
+  }
+
+  //- для комментария
+  const [comment, setComment] = useState("");
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    setComment(value);
   }
 
 
   return (
     <div className={styles.container}>
       <h3>Управляемое поле ввода с сохранением введенного в Redux</h3>
-      <form className={styles.form} onSubmit={()=>{}}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <textarea
           className={styles.input}
           value={value}
@@ -42,7 +40,7 @@ export function CommentElement() {
           Комментировать
         </button>
       </form>
-      <div className={styles.comment}></div>
+      <div className={styles.comment}>{comment}</div>
     </div>
 
   );
