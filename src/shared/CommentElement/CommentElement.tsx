@@ -1,45 +1,48 @@
-import React from 'react';
+import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import styles from './commentelement.css';
 //import { commentContext } from '../context/commentContext';
-
 import { RootState } from '../../App';
-import { useStore } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 
 
 
 
 
-// const {onChange} = useContext(commentContext)
+// const [commentControled, setCommentControled] = useState("");
 
-// function handleChange1(event: ChangeEvent<HTMLTextAreaElement>) {
-//   onChange(event.target.value);
-// }
-
-// const [commentControled1, setCommentControled1] = useState("");
-
-// function handleSubmitControlled1(event: FormEvent) {
+// function handleSubmitControlled(event: FormEvent) {
 //   event.preventDefault();
-//   setCommentControled1(value);
+//   setCommentControled(value);
 // }
 
 export function CommentElement() {
 
-  const store = useStore<RootState>();
-  const value = store.getState().commentText;
+  // const store = useStore<RootState>();
+  // const value = store.getState().commentText;
+  // заменяет две строчки выше
+  const value = useSelector<RootState, string>(state => state.commentText)
+
+  const dispatch = useDispatch();
+
+  function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    dispatch({type: 'UPDATE_COMMENT', text: event.target.value});
+  }
+
+
   return (
     <div className={styles.container}>
-      <h3>{value}</h3>
-      {/* <form className={styles.form} onSubmit={handleSubmitControlled1}>
+      <h3>Управляемое поле ввода с сохранением введенного в Redux</h3>
+      <form className={styles.form} onSubmit={()=>{}}>
         <textarea
           className={styles.input}
           value={value}
-          onChange={handleChange1}
+          onChange={handleChange}
         ></textarea>
         <button className={styles.btn} type="submit">
           Комментировать
         </button>
       </form>
-      <div className={styles.comment}>{commentControled1}</div> */}
+      <div className={styles.comment}></div>
     </div>
 
   );

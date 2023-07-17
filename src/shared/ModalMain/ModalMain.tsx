@@ -10,6 +10,7 @@ import styles from "./modalmain.css";
 import ReactDOM from "react-dom";
 import { useCloseModal } from "../../hooks/useCloseModal";
 import { commentContext } from "../context/commentContext";
+import { CommentElement } from "../CommentElement";
 
 interface IPostProps {
   onClose?: () => void;
@@ -107,6 +108,7 @@ export function ModalMain(props: IPostProps) {
         </form>
         <div className={styles.comment}>{commentControled}</div>
       </div>
+      <CommentElement />
     </div>,
     node
   );

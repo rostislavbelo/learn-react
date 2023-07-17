@@ -12,12 +12,31 @@ import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { commentContext } from "./shared/context/commentContext";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import { createStore } from "redux";
+import { Reducer, createStore } from "redux";
 import { Provider } from "react-redux";
 
+export type RootState = {
+  commentText: string;
+}
 
-const store = createStore(() => {}, composeWithDevTools())
+const initialState = {
+  commentText: 'Привет, Redux!'
+}
 
+
+const rootReducer: Reducer<RootState> = (state = initialState, action) => {
+  switch (action.type) {
+    case 'UPDATE_COMMENT':
+      return {
+        ...state, 
+        commentText: action.text
+      }
+    default:
+      return state;
+  }
+}
+
+const store = createStore(rootReducer, composeWithDevTools())
 
 function AppComponent() {
   const [valueControled, setValueControled] = useState("");

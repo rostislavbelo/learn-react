@@ -2,7 +2,7 @@
     top: 100px;
     left: 50%;
     transform: translateX(-50%);
-    position: fixed;
+    position: absolute;
     z-index: 100;
     background-color: rgb(241, 230, 230);
     width: 75%;
