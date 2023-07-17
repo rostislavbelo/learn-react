@@ -11,6 +11,12 @@ import { tokenContext } from "./shared/context/tocenContext";
 import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { commentContext } from "./shared/context/commentContext";
+import { composeWithDevTools } from "@redux-devtools/extension";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+
+const store = createStore(() => {}, composeWithDevTools())
 
 
 function AppComponent() {
@@ -20,26 +26,28 @@ function AppComponent() {
   const [token] = useToken()
 
   return (
-    <CommentProvider value={{
-        valueControled: valueControled,
-        onChange: setValueControled
-      }
-    }>
-      <tokenContext.Provider value={token}>
-        <UserContextProvider>
-          <PostsContextProvider>
-            <Layout>
-              <Header />
-              <Content>
-                <CardsList />
-              </Content>
-              <ExamplesComponent />      
-            </Layout>
-          </PostsContextProvider>
-        </ UserContextProvider>  
+    <Provider store={store}>
+      <CommentProvider value={{
+          valueControled: valueControled,
+          onChange: setValueControled
+        }
+      }>
+        <tokenContext.Provider value={token}>
+          <UserContextProvider>
+            <PostsContextProvider>
+              <Layout>
+                <Header />
+                <Content>
+                  <CardsList />
+                </Content>
+                <ExamplesComponent />      
+              </Layout>
+            </PostsContextProvider>
+          </ UserContextProvider>  
 
-      </ tokenContext.Provider>
-    </CommentProvider>
+        </ tokenContext.Provider>
+      </CommentProvider>
+    </Provider>
   );
 }
 
