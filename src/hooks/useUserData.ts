@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { tokenContext } from "../shared/context/tocenContext";
+import { useToken } from "./useToken";
 
 
 interface IUserData {
@@ -11,7 +12,7 @@ interface IUserData {
 export function useUserData() {
 
     const [data, setData] = useState<IUserData>({});
-    const token = useContext(tokenContext);
+    const token = useToken();
 
     useEffect(() => {
       if (token !== '') {

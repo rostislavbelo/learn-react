@@ -12,7 +12,7 @@ type CommentElementProps = {
 
 export function CommentElement({value, onChange, onSubmit, comment}:CommentElementProps) {
 
-  // Догика вынесена в умный компонент-контейнер - CommentElementContainer
+  // Логика вынесена в умный компонент-контейнер - CommentElementContainer
 
   // const store = useStore<RootState>();
   // const value = store.getState().commentText;

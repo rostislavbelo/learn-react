@@ -23,8 +23,7 @@ function AppComponent() {
   const [valueControled, setValueControled] = useState("");
   const CommentProvider = commentContext.Provider;
 
-  const [token] = useToken()
-
+  
   return (
     <Provider store={store}>
       <CommentProvider value={{
@@ -32,20 +31,17 @@ function AppComponent() {
           onChange: setValueControled
         }
       }>
-        <tokenContext.Provider value={token}>
-          <UserContextProvider>
-            <PostsContextProvider>
-              <Layout>
-                <Header />
-                <Content>
-                  <CardsList />
-                </Content>
-                <ExamplesComponent />      
-              </Layout>
-            </PostsContextProvider>
-          </ UserContextProvider>  
-
-        </ tokenContext.Provider>
+        <UserContextProvider>
+          <PostsContextProvider>
+            <Layout>
+              <Header />
+              <Content>
+                <CardsList />
+              </Content>
+              <ExamplesComponent />      
+            </Layout>
+          </PostsContextProvider>
+        </ UserContextProvider>  
       </CommentProvider>
     </Provider>
   );

@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, updateToken } from "../store";
 
 export function useToken() {
-    const [token, setToken] = useState('')
 
-    useEffect(
-      ()=>{
-        if (window.__token__) {
-          setToken(window.__token__)
-  
-        }
-      }, []
-    )
-    return [token]
+  const token = useSelector<RootState, string>(state => state.token)
+  const dispatch = useDispatch();
 
+  useEffect(    
+    () => {
+      if (window.__token__) {
+        dispatch(updateToken(window.__token__))
+      }
+    }, []
+  )
+  return token
 }
