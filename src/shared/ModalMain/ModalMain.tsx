@@ -11,6 +11,7 @@ import ReactDOM from "react-dom";
 import { useCloseModal } from "../../hooks/useCloseModal";
 import { commentContext } from "../context/commentContext";
 import { CommentElement } from "../CommentElement";
+import { CommentElementContainer } from "../CommentElementContainer";
 
 interface IPostProps {
   onClose?: () => void;
@@ -95,7 +96,7 @@ export function ModalMain(props: IPostProps) {
       </div>
 
       <div className={styles.container}>
-        <h3>Управляемое поле ввода с сохранением введенного в context</h3>
+        <h3>Управляемое поле ввода с сохранением введенного  с помощью context</h3>
         <form className={styles.form} onSubmit={handleSubmitControlled}>
           <textarea
             className={styles.input}
@@ -108,7 +109,7 @@ export function ModalMain(props: IPostProps) {
         </form>
         <div className={styles.comment}>{commentControled}</div>
       </div>
-      <CommentElement />
+      <CommentElementContainer />
     </div>,
     node
   );
