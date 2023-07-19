@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { tokenContext } from "../shared/context/tocenContext";
-import { useToken } from "./useToken";
+//import { useToken } from "./useToken";
 
 
 export function usePostsData() {
 
   const [data, setData] = useState([]);
   //const token = useContext(tokenContext);
-  const token = useToken();
 
   useEffect(() => {
+    const token = localStorage.getItem('token') || "";
     axios.get("https://oauth.reddit.com/best.json?sr_detail=true", {
 
       headers: { Authorization: `bearer ${token}` },
@@ -20,7 +20,7 @@ export function usePostsData() {
         setData(postsData.data.children);
       })
       .catch(console.log);
-  }, [token]);
+  }, []);
 
   console.log(data);
   return [data];
