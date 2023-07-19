@@ -12,13 +12,31 @@ import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { commentContext } from "./shared/context/commentContext";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import { ActionCreator, AnyAction, Reducer, createStore } from "redux";
+import { ActionCreator, AnyAction, Middleware, Reducer, applyMiddleware, createStore } from "redux";
 import { Provider, useDispatch } from "react-redux";
 import { rootReducer, updateToken } from "./store";
 import { useToken } from "./hooks/useToken";
 
 
-const store = createStore(rootReducer, composeWithDevTools())
+const trulala: Middleware = (store) => (next) => (action) => {
+  console.log('Тру-ля-ля')
+  next(action)
+}
+
+const tralala: Middleware = (store) => (next) => (action) => {
+  console.log('Тра-ля-ля')
+  next(action)
+}
+
+const logger: Middleware = (store) => (next) => (action) => {
+  console.log(action)
+  const returnValue =  next({...action, name: 'tyyty'})
+  console.log(returnValue)
+}
+
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(trulala, tralala, logger),
+))
 
 function AppComponent() {
   const [valueControled, setValueControled] = useState("");
