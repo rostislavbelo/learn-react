@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { tokenContext } from "../shared/context/tocenContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
 //import { useToken } from "./useToken";
 
 
@@ -12,10 +14,13 @@ interface IUserData {
 export function useUserData() {
 
   const [data, setData] = useState<IUserData>({});
+  const token = useSelector<RootState>(state => state.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem('token') || "";
-    if (token) {
+    if (!token) {return};
+    
+      dispatch({type: "ME_REQUEST"});
       axios.get("https://oauth.reddit.com/api/v1/me.json", {
 
         headers: { Authorization: `bearer ${token}` },
@@ -23,12 +28,15 @@ export function useUserData() {
         .then((resp) => {
           const userData = resp.data;
           setData({ name: userData.name, iconImg: userData.icon_img });
-          console.log(resp.data);
+          dispatch({type: "ME_REQUEST_SUCCESS"});
         })
-        .catch(console.log);
-    }
+        .catch((error) => {
+          console.log(error);
+          dispatch({type: "ME_REQUEST_ERROR"});
+        });
 
-  }, []);
+
+  }, [token]);
 
 
   return [data];
