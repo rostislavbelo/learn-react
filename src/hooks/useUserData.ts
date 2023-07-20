@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { tokenContext } from "../shared/context/tocenContext";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../store/reducer";
 //import { useToken } from "./useToken";
 
 

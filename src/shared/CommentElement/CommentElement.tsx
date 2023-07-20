@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './commentelement.css';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { RootState, updateComment } from '../../store';
+import { RootState, updateComment } from '../../store/reducer';
 
 type CommentElementProps = {
   value: string;

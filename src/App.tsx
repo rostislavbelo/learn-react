@@ -14,7 +14,7 @@ import { commentContext } from "./shared/context/commentContext";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { Action, ActionCreator, AnyAction, Middleware, Reducer, applyMiddleware, createStore } from "redux";
 import { Provider, useDispatch } from "react-redux";
-import { RootState, rootReducer, updateToken } from "./store";
+import { RootState, rootReducer, updateToken } from "./store/reducer";
 import { useToken } from "./hooks/useToken";
 import thunk, { ThunkAction } from "redux-thunk";
 

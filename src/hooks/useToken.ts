@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, updateToken } from "../store";
+import { RootState, updateToken } from "../store/reducer";
 import { AnyAction, Store } from "redux";
 import { timeout } from "../App";
 
