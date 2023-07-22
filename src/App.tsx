@@ -14,30 +14,21 @@ import { commentContext } from "./shared/context/commentContext";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { Action, ActionCreator, AnyAction, Middleware, Reducer, applyMiddleware, createStore } from "redux";
 import { Provider, useDispatch } from "react-redux";
-import { RootState, rootReducer, updateToken } from "./store/reducer";
-import { useToken } from "./hooks/useToken";
-import thunk, { ThunkAction } from "redux-thunk";
+import { RootAction, RootState, rootReducer, saveToken, updateToken } from "./store/reducer";
+import thunk, { ThunkAction, ThunkMiddleware } from "redux-thunk";
 
 
 
-const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk),
-))
 
-export const timeout = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispath, getState) => {
-  dispath({type: 'START'});
-  setTimeout(
-    () => {
-      dispath({type: 'FINISH'})
-    }, 2000
-  )
-}
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk as ThunkMiddleware<RootState, RootAction>)))
+
+
 
 function AppComponent() {
   const [valueControled, setValueControled] = useState("");
   const CommentProvider = commentContext.Provider;
 
-  useToken(store);
+  store.dispatch(saveToken()); 
   
   return (
     <Provider store={store}>

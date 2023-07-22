@@ -1,6 +1,8 @@
 import { ActionCreator, AnyAction, Reducer } from "redux";
 import { ME_REQUEST, ME_REQUEST_ERROR, ME_REQUEST_SUCCESS, MeRequestAction, MeRequestErrorAction, MeRequestSuccessAction } from "./me/actions";
 import { MeState, meReducer } from "./me/reducer";
+import { useEffect } from "react";
+import { ThunkAction } from "redux-thunk";
 
 export type RootState = {
     commentText: string;
@@ -40,14 +42,14 @@ export type RootState = {
     token,
   })
 
-  type MyAction = 
+  export type RootAction = 
   UpdateCommentAction | 
   UpdateTokenAction | 
   MeRequestAction |
   MeRequestSuccessAction |
   MeRequestErrorAction;
 
-  export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
+  export const rootReducer: Reducer<RootState, RootAction> = (state = initialState, action) => {
     switch (action.type) {
       case 'UPDATE_COMMENT':
         return {
@@ -70,4 +72,16 @@ export type RootState = {
       default:
         return state;
     }
+  }
+
+  // по домашке 11 модуля - выносит сохранение токена в redux с помошью мидлвэра Thunk
+  export const saveToken = (): ThunkAction<void, RootState, unknown, RootAction> => (dispatch) => {
+    
+    useEffect(() => {
+      let token = localStorage.getItem('token') || window.__token__;
+      if (token && token !== 'undefined') {
+        dispatch(updateToken(token));
+        localStorage.setItem('token',  token);
+      }
+    }, [])
   }
