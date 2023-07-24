@@ -12,6 +12,7 @@ import { useCloseModal } from "../../hooks/useCloseModal";
 import { commentContext } from "../context/commentContext";
 import { CommentElement } from "../CommentElement";
 import { CommentElementContainer } from "../CommentElementContainer";
+import { FormTestElement } from "../FormTestElement";
 
 interface IPostProps {
   onClose?: () => void;
@@ -110,6 +111,7 @@ export function ModalMain(props: IPostProps) {
         <div className={styles.comment}>{commentControled}</div>
       </div>
       <CommentElementContainer />
+      <FormTestElement />
     </div>,
     node
   );

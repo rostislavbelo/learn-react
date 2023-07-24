@@ -22,6 +22,5 @@ export function usePostsData() {
       .catch(console.log);
   }, [token]);
 
-  console.log(data);
   return [data];
 }

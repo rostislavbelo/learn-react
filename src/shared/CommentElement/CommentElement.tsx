@@ -36,7 +36,7 @@ export function CommentElement({value, onChange, onSubmit, comment}:CommentEleme
 
   return (
     <div className={styles.container}>
-      <h3>Управляемое поле ввода с сохранением введенного с помощью Redux</h3>
+      <h3>Управляемое поле ввода с сохранением введенного store Redux</h3>
       <form className={styles.form} onSubmit={onSubmit}>
         <textarea
           className={styles.input}

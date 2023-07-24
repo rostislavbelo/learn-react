@@ -16,6 +16,7 @@ import { Action, ActionCreator, AnyAction, Middleware, Reducer, applyMiddleware,
 import { Provider, useDispatch } from "react-redux";
 import { RootAction, RootState, rootReducer, saveToken, updateToken } from "./store/reducer";
 import thunk, { ThunkAction, ThunkMiddleware } from "redux-thunk";
+import { CardsListNew } from "./shared/CardsListNew";
 
 
 
@@ -42,7 +43,8 @@ function AppComponent() {
             <Layout>
               <Header />
               <Content>
-                <CardsList />
+                {/* <CardsList /> */}
+                <CardsListNew />
               </Content>
               <ExamplesComponent />      
             </Layout>

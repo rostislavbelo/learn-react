@@ -1,6 +1,7 @@
 import { hot } from "react-hot-loader/root";
 import * as React from "react";
 import styles from "./examples.css";
+import { FormTestElement } from "./FormTestElement";
 
 //----------------------------------------------------------
 // дз по тс
@@ -176,7 +177,7 @@ export function ExamplesComponent() {
           <li onClick={console.log}>1</li>
         </ul>
       </Dropdown>
-      
+   
     </div>
   );
 }

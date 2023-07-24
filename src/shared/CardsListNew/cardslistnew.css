@@ -1,0 +1,27 @@
+.cardsList {
+    min-height: 400px;
+}
+
+.title {
+    font-size: 22px;
+    color: tomato;
+    text-align: center;
+    margin: 20px;
+    line-height: 24px;
+}
+
+.btnModal {
+    padding: 10px 15px;
+    border: 1px solid tomato;
+    font-size: 18px;
+    color: tomato;
+    margin: 20px auto;
+    border-radius: 10px;
+    display: block;
+}
+
+@media all and (min-width: 1024px) {
+    .cardsList {
+        padding: 40px 0;
+    }
+}
