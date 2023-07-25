@@ -25,13 +25,16 @@ export function CardsListNew() {
   const [errorLoading, setErrorLoading] = useState('')
   const bottomOfList = useRef<HTMLDivElement>(null);
   const [nextAfter, setNextAfter] = useState('');
+  const [count, setCount] = useState(0);
 
 
   useEffect(() => {
     // тут через асинк запрос, для примера
     async function load() {
       setErrorLoading('')
-      try {
+      
+      try {     
+
         const {data: {data: {after, children}}} = await axios.get("https://oauth.reddit.com/rising/", {
         headers: { Authorization: `bearer ${token}` },
         params: {
@@ -41,25 +44,24 @@ export function CardsListNew() {
           after: nextAfter
         },
       });
-
+        setCount(count + 1); 
+        console.log(count) 
         setNextAfter(after);
         //ВАЖНО! Передача колбека внутри сеттера. С обращением к предыдущему состоянию, чтобы не затирать его, а добавлять к нему.
-        setData(prevChildren => prevChildren.concat(...children));
-        console.log(after)
-        console.log(children)      
-        
+        setData(prevChildren => prevChildren.concat(...children));       
 
       } catch (error) {
         console.error(error);
         setErrorLoading(String(error));
       }
       setLoading(false);
-    }
+ 
+  }
 
     //Обсёрвер наблюдает за скроллом.
     const observer = new IntersectionObserver((enteries) => {
-      if (enteries[0].isIntersecting) {
-        load();
+      if (enteries[0].isIntersecting && count < 2) {
+         load();
       }
     }, {rootMargin: '10px'});
 
@@ -73,7 +75,7 @@ export function CardsListNew() {
       }
     }
 
-  }, [bottomOfList.current, nextAfter, token]);
+  }, [bottomOfList.current, nextAfter, token, count]);
 
 
 
@@ -88,18 +90,20 @@ export function CardsListNew() {
               <Card dataAuthor={item.data.author} dataTitle={item.data.title} imgPath={item.data.thumbnail} dataUrl={item.data.permalink}/>
             </li>
           ))
-        } 
+        }
 
-        <div ref={bottomOfList}></div>
+        <div ref={bottomOfList}></div> 
 
+        {count === 2 &&  (<button style={{display:"block", width:"max-content", margin:"10px auto", padding: "5px 10px", fontSize:"20px", color:"red", border:"2px solid blue", borderRadius:"5px"}} onClick={()=>{setCount(0)}}>Загрузить ещё</button>)}
+
+        
         {/* {data.length !== 0 && !loading && !errorLoading && (
           <li>
             <span style={{display:"block", width:"max-content", margin:"10px auto", fontSize:"20px", color:"red"}}>Постов пока нет!</span>
           </li>
         )} */}
-
         
-        {loading && (
+        {(count < 2 || loading) && (
           <li>
             <span style={{display:"block", width:"max-content", margin:"10px auto", fontSize:"20px", color:"red"}}>Идёт загрузка постов...</span>
           </li>
