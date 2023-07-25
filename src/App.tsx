@@ -46,7 +46,7 @@ function AppComponent() {
                 {/* <CardsList /> */}
                 <CardsListNew />
               </Content>
-              <ExamplesComponent />      
+              {/* <ExamplesComponent />       */}
             </Layout>
           </PostsContextProvider>
         </ UserContextProvider>  
