@@ -1,5 +1,6 @@
 .cardsList {
     min-height: 400px;
+    margin-bottom: 100px;
 }
 
 .title {
@@ -18,6 +19,11 @@
     margin: 20px auto;
     border-radius: 10px;
     display: block;
+    max-width: 200px;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media all and (min-width: 1024px) {

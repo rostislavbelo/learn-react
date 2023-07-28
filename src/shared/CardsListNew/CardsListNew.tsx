@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState } from "react";
 import styles from "./cardslistnew.css";
-import { postsContext } from "../context/postsContext";
 import { generateRandomString } from "../utils/generateRandomString";
 import { Card } from "../CardsList/Card";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducer";
 import axios from "axios";
-import { error } from "console";
+import { ModalMain } from "../ModalMain";
+import { Link, Route, Routes } from "react-router-dom";
 
 interface ICardListProps {
   author?: string;
@@ -35,7 +35,7 @@ export function CardsListNew() {
       
       try {     
 
-        const {data: {data: {after, children}}} = await axios.get("https://oauth.reddit.com/rising/", {
+        const {data: {data: {after, children}}} = await axios.get("https://oauth.reddit.com/rising.json", {
         headers: { Authorization: `bearer ${token}` },
         params: {
           //количество постов в списке(по дефолту их 25)
@@ -78,9 +78,12 @@ export function CardsListNew() {
   }, [bottomOfList.current, nextAfter, token, count]);
 
 
-
   return (
     <>
+
+      <h2 className={styles.title}>Пример модалки через React-router</h2>
+      <Link to="/list/modal/" className={styles.btnModal}>Открыть</Link>
+
       <h2 className={styles.title}>Список-репликация постов с Reddit.com как "бесконечный список" с подгрузкой</h2>
       <ul className={styles.cardsList}>
 

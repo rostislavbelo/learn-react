@@ -4,4 +4,5 @@
     padding: 15px 40px;
     border-bottom: 2px solid var(--black);
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }

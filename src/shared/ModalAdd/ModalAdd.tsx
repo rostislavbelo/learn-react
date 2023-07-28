@@ -6,40 +6,24 @@ import React, {
   useRef,
   useState,
 } from "react";
-import styles from "./modalmain.css";
+import styles from "./modaladd.css";
 import ReactDOM from "react-dom";
 import { useCloseModal } from "../../hooks/useCloseModal";
 import { commentContext } from "../context/commentContext";
-import { CommentElement } from "../CommentElement";
 import { CommentElementContainer } from "../CommentElementContainer";
 import { FormTestElement } from "../FormTestElement";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface IPostProps {
   onClose?: () => void;
 }
 
-export function ModalMain(props: IPostProps) {
+export function ModalAdd(props: IPostProps) {
   const ref = useRef<HTMLDivElement>(null);
-
-  // useEffect(()=>{
-  //   function handleClick(event:MouseEvent) {
-  //     if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-  //       props.onClose?.();
-  //     }
-  //   }
-  //   document.addEventListener('click', handleClick)
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClick)
-  //   }
-  // },[]);
 
   const history = useNavigate();
 
-
-  // Заменяет код выше внешним хуком
-  useCloseModal(() => {props.onClose?.()}, ref);
+  useCloseModal(() => {history('/list/')}, ref);
 
   const node = document.querySelector("#modal_root");
   if (!node) {
@@ -64,11 +48,6 @@ export function ModalMain(props: IPostProps) {
   }
   //---------------------------------------------------------------------
 
-  // Для управляемого инпута
-  
-  
-  // const [valueControled, setValueControled] = useState(""); //- вынесли наверх в App в контекст onChange заменяет setValueControled
-
   const {valueControled, onChange} = useContext(commentContext)
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -84,7 +63,8 @@ export function ModalMain(props: IPostProps) {
 
   return ReactDOM.createPortal(
     <div className={styles.modalMain} ref={ref}>
-      <h2 className={styles.title}>Пример модалки через Portal</h2>
+      <h2 className={styles.title}>Пример модалки через React-router<br/><span>Окно открывается/закрывается по роуту</span></h2>
+      
 
       <div className={styles.container}>
         <h3>Неуправляемое поле ввода с focus через ref</h3>

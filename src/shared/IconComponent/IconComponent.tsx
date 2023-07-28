@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./iconcomponent.css";
 import classNames from "classnames";
-import { IconComment, IconShare, IconHidden, IconSave, IconComplain, IconMenu, IconAnon } from "../icons";
+import { IconComment, IconShare, IconHidden, IconSave, IconComplain, IconMenu, IconAnon, IconLogo } from "../icons";
 
 const icons = { "IconComment": IconComment, "IconShare": IconShare, "IconHidden":IconHidden, 
-"IconSave":IconSave, "IconComplain":IconComplain, "IconMenu":IconMenu, "IconAnon": IconAnon};
+"IconSave":IconSave, "IconComplain":IconComplain, "IconMenu":IconMenu, "IconAnon": IconAnon, "IconLogo": IconLogo};
 
 export type TSizes = '12' | '14' | '15' | '16' | '20';
 
-export type TNames = "IconComment" | "IconShare" | "IconHidden" | "IconSave" |"IconComplain" | "IconMenu" | "IconAnon";
+export type TNames = "IconComment" | "IconShare" | "IconHidden" | "IconSave" |"IconComplain" | "IconMenu" | "IconAnon" | "IconLogo";
 
 interface IIconProps {
   name: TNames;

@@ -5,3 +5,4 @@ export * from './IconMenu';
 export * from './IconComplain';
 export * from './IconSave';
 export * from './IconAnon';
+export * from './IconLogo';
