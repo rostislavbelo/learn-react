@@ -469,7 +469,7 @@ app.use("/static", express_1.default.static("./dist/client"));
 //   res.send(indexTemplate(ReactDOM.renderToString(App())));
 // });
 app.get("/auth", function (req, res) {
-    axios_1.default.post('https://www.reddit.com/api/v1/access_token', "grant_type=authorization_code&code=".concat(req.query.code, "&redirect_uri=https://learn-react-production.up.railway.app"), {
+    axios_1.default.post('https://www.reddit.com/api/v1/access_token', "grant_type=authorization_code&code=".concat(req.query.code, "&redirect_uri=https://learn-react-production.up.railway.app/auth"), {
         auth: { username: 'undefined', password: process.env.SECRET },
         headers: { 'Content-type': 'application/x-www-form-urlencoded' }
     })
