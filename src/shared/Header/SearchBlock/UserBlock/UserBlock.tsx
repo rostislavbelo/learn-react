@@ -13,7 +13,7 @@ interface IUserBlockProps {
 export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity`}
+      href={`https://www.reddit.com/api/v1/authorize?client_id=2iX8QEVD6KCxAK559Z87Dg&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity`}
       className={styles.userBox}
     >
       <div className={styles.avatarBox}>
