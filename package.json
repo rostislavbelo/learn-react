@@ -12,9 +12,9 @@
     "deploy": "gh-pages -d build:dev",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build": "webpack --mode=production",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=-ojBPxqULWTT8vPR_MN2bQ SECRET=rIAM0n-OEVjLAj6bxzHg51ip_onCyQ node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env CLIENT_ID=-ojBPxqULWTT8vPR_MN2bQ SECRET=rIAM0n-OEVjLAj6bxzHg51ip_onCyQ node ./dist/server/server.js"
+    "start": "cross-env CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
