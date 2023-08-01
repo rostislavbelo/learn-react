@@ -470,7 +470,7 @@ app.use("/static", express_1.default.static("./dist/client"));
 // });
 app.get("/auth", function (req, res) {
     axios_1.default.post('https://www.reddit.com/api/v1/access_token', "grant_type=authorization_code&code=".concat(req.query.code, "&redirect_uri=https://learn-react-production.up.railway.app/auth"), {
-        auth: { username: process.env.REACT_APP_CLIENT_ID, password: process.env.REACT_APP_SECRET },
+        auth: { username: 'undefined', password: process.env.REACT_APP_SECRET },
         headers: { 'Content-type': 'application/x-www-form-urlencoded' }
     })
         .then(function (_a) {
@@ -952,7 +952,7 @@ var userblock_css_1 = __importDefault(__webpack_require__(35));
 var IconComponent_1 = __webpack_require__(4);
 function UserBlock(_a) {
     var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;
-    return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=".concat(process.env.REACT_APP_CLIENT_ID, "&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity"), className: userblock_css_1.default.userBox },
+    return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=".concat('undefined', "&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity"), className: userblock_css_1.default.userBox },
         react_1.default.createElement("div", { className: userblock_css_1.default.avatarBox }, avatarSrc
             ? react_1.default.createElement("img", { src: avatarSrc, alt: "User avatar", className: userblock_css_1.default.avatarImage })
             : react_1.default.createElement(IconComponent_1.IconComponent, { name: "IconAnon" })),

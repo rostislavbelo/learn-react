@@ -48,5 +48,5 @@ module.exports = {
     minimize: false,
   },
 
-  plugins: [new DefinePlugin({"process.env.CLIENT_ID": `'${process.env.CLIENT_ID}'`})]
+  plugins: [new DefinePlugin({"process.env.REACT_APP_CLIENT_ID": `'${process.env.REACT_APP_CLIENT_ID}'`}, {"process.env.REACT_APP_SECRET": `'${process.env.REACT_APP_SECRET}'`})]
 };

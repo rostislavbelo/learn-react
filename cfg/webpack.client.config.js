@@ -7,7 +7,7 @@ const IS_DEV = NODE_ENV === "development";
 const IS_PROD = NODE_ENV === "production";
 const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 const DEV_PLUGINS = [ new HotModuleReplacementPlugin(), new CleanWebpackPlugin() ];
-const COMMON_PLUGINS = [ new DefinePlugin({ "process.env.CLIENT_ID": `'${process.env.CLIENT_ID}'` }) ];
+const COMMON_PLUGINS = [new DefinePlugin({"process.env.REACT_APP_CLIENT_ID": `'${process.env.REACT_APP_CLIENT_ID}'`}, {"process.env.REACT_APP_SECRET": `'${process.env.REACT_APP_SECRET}'`})];
 
 function setupDevtool() {
   if (IS_DEV) return "eval";
