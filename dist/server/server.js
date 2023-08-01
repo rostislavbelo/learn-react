@@ -463,8 +463,8 @@ var indexTemplate_1 = __webpack_require__(19);
 var App_tsx_1 = __webpack_require__(20);
 var axios_1 = __importDefault(__webpack_require__(3));
 var PORT = process.env.PORT || 3000;
-var ID = '2iX8QEVD6KCxAK559Z87Dg';
-var PASSWORD = '0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg';
+var ID = 'undefined';
+var PASSWORD = process.env.SECRET;
 var app = (0, express_1.default)();
 app.use("/static", express_1.default.static("./dist/client"));
 // app.get("/auth", (req, res) => {
@@ -952,7 +952,7 @@ exports.UserBlock = void 0;
 var react_1 = __importDefault(__webpack_require__(0));
 var userblock_css_1 = __importDefault(__webpack_require__(35));
 var IconComponent_1 = __webpack_require__(4);
-var ID = '2iX8QEVD6KCxAK559Z87Dg';
+var ID = 'undefined';
 function UserBlock(_a) {
     var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;
     return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=".concat(ID, "&response_type=code&state=random_string&redirect_uri=https://learn-react-rostislavbel.up.railway.app/auth&duration=permanent&scope=read submit identity"), className: userblock_css_1.default.userBox },
