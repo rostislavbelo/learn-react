@@ -11,10 +11,10 @@
     "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d build:dev",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build": "webpack --mode=production",
-    "dev": "cross-env NODE_ENV=development REACT_APP_CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg REACT_APP_SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./bin/dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=2Qu0EbaCx1JoXlprPOYAHQ node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env REACT_APP_CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg REACT_APP_SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./dist/server/server.js"
+    "start": "node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -55,7 +55,6 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.3",
     "webpack-dev-server": "^3.10.3",
-    "webpack-hot-middleware": "^2.25.0",
-    "react-scripts": "5.0.1"
+    "webpack-hot-middleware": "^2.25.0"
   }
 }
