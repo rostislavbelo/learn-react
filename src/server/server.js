@@ -5,8 +5,8 @@ import { App } from "../App.tsx";
 import axios from "axios";
 
 const PORT = process.env.PORT || 3000;
-const ID = process.env.CLIENT_ID;
-const PASSWORD = process.env.SECRET;
+const ID = '2iX8QEVD6KCxAK559Z87Dg';
+const PASSWORD = '0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg';
 
 const app = express();
 
