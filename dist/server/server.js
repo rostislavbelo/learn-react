@@ -462,10 +462,16 @@ var server_1 = __importDefault(__webpack_require__(18));
 var indexTemplate_1 = __webpack_require__(19);
 var App_tsx_1 = __webpack_require__(20);
 var axios_1 = __importDefault(__webpack_require__(3));
+var compression_1 = __importDefault(__webpack_require__(115));
+var helmet_1 = __importDefault(__webpack_require__(116));
 var PORT = process.env.PORT || 3000;
 var ID = '2iX8QEVD6KCxAK559Z87Dg';
 var PASSWORD = '0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg';
 var app = (0, express_1.default)();
+app.use((0, compression_1.default)());
+app.use((0, helmet_1.default)({
+    contentSecurityPolicy: false,
+}));
 app.use("/static", express_1.default.static("./dist/client"));
 // app.get("/auth", (req, res) => {
 //   res.send(indexTemplate(ReactDOM.renderToString(App())));
@@ -3205,6 +3211,18 @@ module.exports = {
 	"form": "modaladd__form--2qwM4"
 };
 
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports) {
+
+module.exports = require("compression");
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports) {
+
+module.exports = require("helmet");
 
 /***/ })
 /******/ ]);

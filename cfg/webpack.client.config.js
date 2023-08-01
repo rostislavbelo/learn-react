@@ -14,6 +14,7 @@ function setupDevtool() {
   if (IS_PROD) return false;
 }
 module.exports = {
+  target: "web",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
     alias: {

@@ -3,12 +3,19 @@ import ReactDOM from "react-dom/server";
 import { indexTemplate } from "./indexTemplate";
 import { App } from "../App.tsx";
 import axios from "axios";
+import compression from 'compression';
+import helmet from 'helmet';
 
 const PORT = process.env.PORT || 3000;
 const ID = '2iX8QEVD6KCxAK559Z87Dg';
 const PASSWORD = '0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg';
 
 const app = express();
+
+app.use(compression());
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 
 app.use("/static", express.static("./dist/client"));
 
