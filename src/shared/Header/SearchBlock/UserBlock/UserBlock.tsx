@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./userblock.css";
 import { IconComponent } from "../../../IconComponent";
 
-const ID = '2iX8QEVD6KCxAK559Z87Dg';
+const ID = process.env.CLIENT_ID;
 
 interface IUserBlockProps {
   avatarSrc?: string;
