@@ -14,7 +14,7 @@
     "build": "webpack --mode=production",
     "dev": "cross-env NODE_ENV=development node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./dist/server/server.js"
+    "start": "cross-env REACT_APP_CLIENT_ID=2iX8QEVD6KCxAK559Z87Dg REACT_APP_SECRET=0w0Uud4Ce8xAWw2zMlSEA58ZbPwAqg node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",

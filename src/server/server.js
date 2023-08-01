@@ -20,7 +20,7 @@ app.get("/auth", (req, res) => {
     'https://www.reddit.com/api/v1/access_token',
     `grant_type=authorization_code&code=${req.query.code}&redirect_uri=https://learn-react-production.up.railway.app/auth`,
     {
-      auth: { username: process.env.CLIENT_ID, password: process.env.SECRET},
+      auth: { username: process.env.REACT_APP_CLIENT_ID, password: process.env.REACT_APP_SECRET},
       headers: { 'Content-type': 'application/x-www-form-urlencoded' }
     }
   )

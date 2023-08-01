@@ -2,9 +2,6 @@ import React from "react";
 import styles from "./userblock.css";
 import { IconComponent } from "../../../IconComponent";
 
-const CLIENT_ID = process.env.CLIENT_ID
-
-
 interface IUserBlockProps {
   avatarSrc?: string;
   username?: string;
@@ -13,7 +10,7 @@ interface IUserBlockProps {
 export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity`}
+      href={`https://www.reddit.com/api/v1/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=code&state=random_string&redirect_uri=https://learn-react-production.up.railway.app/auth&duration=permanent&scope=read submit identity`}
       className={styles.userBox}
     >
       <div className={styles.avatarBox}>
