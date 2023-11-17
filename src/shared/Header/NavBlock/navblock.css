@@ -13,6 +13,11 @@
     margin-bottom: 12px;
 }
 
+.item:last-child {
+    pointer-events: none;
+    opacity: 0;
+}
+
 
 .item a {
     min-width    : 40px;
